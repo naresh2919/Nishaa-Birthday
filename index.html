@@ -1089,6 +1089,107 @@ section{
   z-index:5;
 }
 
+.dream-feature{
+  position:relative;
+  width:100%;
+  display:grid;
+  grid-template-columns:minmax(0,1.25fr) minmax(240px,.75fr);
+  gap:24px;
+  align-items:stretch;
+  padding:14px;
+  background:
+    linear-gradient(135deg,rgba(238,243,255,.98),rgba(207,226,255,.92));
+  color:var(--ink);
+  box-shadow:
+    0 28px 70px rgba(0,0,0,.55),
+    0 0 42px rgba(90,162,255,.2);
+  transform:rotate(-1deg);
+}
+
+.dream-feature:before{
+  content:"ONE OF ONE";
+  position:absolute;
+  top:18px;
+  left:-12px;
+  z-index:2;
+  padding:5px 12px;
+  background:var(--royal);
+  color:#fff;
+  font-family:Caveat,cursive;
+  font-size:18px;
+  letter-spacing:1px;
+  transform:rotate(-8deg);
+  box-shadow:0 8px 16px rgba(0,0,0,.24);
+}
+
+.dream-feature .dream-image{
+  position:relative;
+  min-height:330px;
+  overflow:hidden;
+  background:#0a1a4a;
+  border:8px solid #fff;
+  box-shadow:inset 0 0 0 1px rgba(28,63,158,.3);
+}
+
+.dream-feature .dream-image:after{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:linear-gradient(120deg,rgba(255,255,255,.18),transparent 35%,rgba(28,63,158,.16));
+  mix-blend-mode:screen;
+}
+
+.dream-feature img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center;
+  transition:transform .7s ease;
+}
+
+.dream-feature:hover img{
+  transform:scale(1.04);
+}
+
+.dream-copy{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  padding:24px 24px 20px 8px;
+}
+
+.dream-kicker{
+  font-family:Caveat,cursive;
+  font-size:22px;
+  color:var(--royal);
+  margin-bottom:8px;
+}
+
+.dream-copy h3{
+  font-family:"Pinyon Script",cursive;
+  font-size:clamp(46px,6vw,72px);
+  font-weight:400;
+  line-height:.95;
+  color:var(--royal);
+}
+
+.dream-copy p{
+  margin-top:18px;
+  font-size:15px;
+  line-height:1.7;
+  color:var(--ink);
+}
+
+.dream-sign{
+  margin-top:22px;
+  padding-top:14px;
+  border-top:1px dashed rgba(28,63,158,.4);
+  font-family:Caveat,cursive;
+  font-size:23px;
+  color:var(--royal);
+}
+
 
 /* ================= MUSIC ================= */
 
@@ -1601,6 +1702,20 @@ footer b{
 
   section{
     padding:76px 16px;
+  }
+
+  .dream-feature{
+    grid-template-columns:1fr;
+    gap:12px;
+    padding:10px;
+  }
+
+  .dream-feature .dream-image{
+    min-height:260px;
+  }
+
+  .dream-copy{
+    padding:18px 12px 14px;
   }
 
   .hero{
@@ -2202,6 +2317,44 @@ pinned up one by one
 <div class="gal">
 
 
+<article class="dream-feature">
+
+<div class="dream-image">
+
+<img
+  src="Same Soul, Bigger Dreams.png"
+  alt="Same soul, bigger dreams quote artwork"
+  loading="lazy"
+  onerror="this.style.display='none'"
+>
+
+</div>
+
+<div class="dream-copy">
+
+<div class="dream-kicker">
+  a little reminder
+</div>
+
+<h3>
+  Same soul,<br>
+  bigger dreams.
+</h3>
+
+<p>
+  Keep the softness that makes you special,
+  and let every dream you carry grow with you.
+</p>
+
+<div class="dream-sign">
+  made for your next chapter ✦
+</div>
+
+</div>
+
+</article>
+
+
 <div class="polaroid wide">
 
 <div class="frame">
@@ -2350,8 +2503,8 @@ your song, your moment
 >
 
 <source
-  src="music/birthday-song.mp3"
-  type="audio/mpeg"
+  src="thuli-thuli.aac"
+  type="audio/aac"
 >
 
 Your browser does not support audio.
