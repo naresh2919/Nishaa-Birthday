@@ -1549,6 +1549,66 @@ audio{
   margin-top:26px;
 }
 
+.password-dialog{
+  width:min(440px,calc(100% - 32px));
+  margin:auto;
+  padding:28px;
+  border:1px solid rgba(120,170,255,.55);
+  border-radius:8px;
+  color:var(--ink);
+  background:var(--paper);
+  box-shadow:0 24px 70px rgba(0,0,0,.55);
+}
+
+.password-dialog::backdrop{
+  background:rgba(4,10,31,.82);
+  backdrop-filter:blur(4px);
+}
+
+.password-dialog h3{
+  margin-bottom:12px;
+  color:var(--royal);
+  font-family:"Pinyon Script",cursive;
+  font-size:38px;
+  font-weight:400;
+}
+
+.password-dialog label{
+  display:block;
+  margin-bottom:6px;
+}
+
+.password-dialog input{
+  width:100%;
+  min-height:46px;
+  padding:10px 12px;
+  border:1px solid #8498c3;
+  border-radius:4px;
+  color:var(--ink);
+  background:#fff;
+  font:inherit;
+}
+
+.password-dialog .open-btn{
+  margin-top:14px;
+}
+
+.password-error{
+  min-height:24px;
+  margin-top:8px;
+  color:#a1223c;
+}
+
+.password-cancel{
+  border:0;
+  padding:6px 0;
+  color:var(--ink);
+  background:transparent;
+  font:inherit;
+  text-decoration:underline;
+  cursor:pointer;
+}
+
 
 /* ================= BIRTHDAY CONFESSION ================= */
 
@@ -1800,11 +1860,311 @@ footer b{
   }
 }
 
+
+/* =====================================================
+   PREMIUM EXPERIENCE UPGRADE
+===================================================== */
+:root{
+  --aurora-1:#7c5cff;
+  --aurora-2:#35d6ff;
+  --aurora-3:#ff6ec7;
+  --glass:rgba(255,255,255,.075);
+}
+
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:-1;
+  pointer-events:none;
+  opacity:.22;
+  background:
+    radial-gradient(circle at 12% 18%,var(--aurora-1),transparent 24%),
+    radial-gradient(circle at 88% 28%,var(--aurora-2),transparent 22%),
+    radial-gradient(circle at 50% 92%,var(--aurora-3),transparent 25%);
+  filter:blur(70px);
+  animation:auroraDrift 16s ease-in-out infinite alternate;
+}
+body::after{
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:9990;
+  pointer-events:none;
+  opacity:.055;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.8'/%3E%3C/svg%3E");
+}
+@keyframes auroraDrift{
+  0%{transform:scale(1) translate3d(-2%,0,0) rotate(0deg)}
+  50%{transform:scale(1.12) translate3d(2%,-2%,0) rotate(2deg)}
+  100%{transform:scale(1.05) translate3d(-1%,2%,0) rotate(-2deg)}
+}
+.loader{
+  background:
+    radial-gradient(circle at 50% 45%,rgba(90,162,255,.12),transparent 28%),
+    #040a1f;
+}
+.loader-inner p{
+  letter-spacing:.04em;
+  animation:softPulse 2s ease-in-out infinite;
+}
+@keyframes softPulse{50%{opacity:.5;transform:translateY(-2px)}}
+
+.hero{
+  isolation:isolate;
+}
+.hero::before{
+  content:"";
+  position:absolute;
+  width:55vw;
+  height:55vw;
+  max-width:720px;
+  max-height:720px;
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:50%;
+  box-shadow:0 0 100px rgba(90,162,255,.08),inset 0 0 100px rgba(124,92,255,.05);
+  animation:orbitGlow 18s linear infinite;
+}
+@keyframes orbitGlow{
+  to{transform:rotate(360deg) scale(1.05)}
+}
+.title-block .small{
+  position:relative;
+  padding-left:16px;
+}
+.title-block .small::before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:.65em;
+  width:7px;
+  height:7px;
+  border-radius:50%;
+  background:var(--aurora-2);
+  box-shadow:0 0 14px var(--aurora-2);
+}
+.name-line{
+  animation:nameReveal 1.2s .45s both cubic-bezier(.2,.8,.2,1);
+}
+@keyframes nameReveal{
+  from{opacity:0;transform:translateY(18px);filter:blur(7px)}
+  to{opacity:1;transform:none;filter:none}
+}
+.open-btn{
+  position:relative;
+  overflow:hidden;
+  isolation:isolate;
+}
+.open-btn::before{
+  content:"";
+  position:absolute;
+  top:-80%;
+  left:-30%;
+  width:22%;
+  height:260%;
+  transform:rotate(25deg);
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.65),transparent);
+  animation:buttonShine 4.5s ease-in-out infinite;
+  z-index:-1;
+}
+@keyframes buttonShine{
+  0%,65%{left:-30%}
+  82%,100%{left:125%}
+}
+.polaroid,
+.dream-feature,
+.player,
+.wish{
+  transition:transform .5s cubic-bezier(.2,.8,.2,1),box-shadow .5s ease;
+}
+.polaroid:hover{
+  box-shadow:0 32px 80px rgba(0,0,0,.7),0 0 55px rgba(90,162,255,.3);
+}
+.dream-feature{
+  border:1px solid rgba(255,255,255,.35);
+  backdrop-filter:blur(8px);
+}
+.player:hover{
+  transform:translateY(-6px);
+  box-shadow:0 22px 75px rgba(0,0,0,.45),0 0 65px rgba(90,162,255,.24);
+}
+.envelope{
+  animation:envelopeFloat 4s ease-in-out infinite;
+}
+@keyframes envelopeFloat{
+  0%,100%{transform:translateY(0) rotate(0)}
+  50%{transform:translateY(-7px) rotate(.6deg)}
+}
+.envelope.open{
+  animation:none;
+}
+.countdown::before{
+  content:"";
+  position:absolute;
+  width:420px;
+  height:420px;
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(90,162,255,.12),transparent 68%);
+  filter:blur(5px);
+  animation:breath 5s ease-in-out infinite;
+}
+@keyframes breath{50%{transform:scale(1.18);opacity:.65}}
+.final h2{
+  animation:finalGlow 3s ease-in-out infinite alternate;
+}
+@keyframes finalGlow{
+  from{filter:drop-shadow(0 0 4px rgba(255,255,255,.15))}
+  to{filter:drop-shadow(0 0 22px rgba(90,162,255,.45))}
+}
+.birthday-wish{
+  position:relative;
+  overflow:hidden;
+}
+.birthday-wish::before{
+  content:"";
+  position:absolute;
+  width:180px;height:180px;
+  right:-70px;top:-70px;
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(90,162,255,.2),transparent 68%);
+}
+.password-dialog{
+  backdrop-filter:blur(16px);
+}
+.password-dialog input:focus{
+  outline:none;
+  border-color:var(--royal);
+  box-shadow:0 0 0 4px rgba(90,162,255,.15);
+}
+#scrollProgress{
+  position:fixed;
+  top:0;left:0;
+  width:0;height:3px;
+  z-index:10001;
+  background:linear-gradient(90deg,var(--aurora-3),var(--aurora-1),var(--aurora-2));
+  box-shadow:0 0 18px rgba(90,162,255,.8);
+}
+#cursorGlow{
+  position:fixed;
+  width:190px;height:190px;
+  border-radius:50%;
+  pointer-events:none;
+  z-index:9991;
+  transform:translate(-50%,-50%);
+  background:radial-gradient(circle,rgba(90,162,255,.11),transparent 65%);
+  mix-blend-mode:screen;
+  transition:opacity .25s ease;
+}
+.reveal-on-scroll{
+  opacity:0;
+  transform:translateY(30px);
+  transition:opacity .9s ease,transform .9s cubic-bezier(.2,.8,.2,1);
+}
+.reveal-on-scroll.visible{
+  opacity:1;
+  transform:none;
+}
+@media(max-width:600px){
+  #cursorGlow{display:none}
+  .hero::before{width:92vw;height:92vw}
+}
+@media(prefers-reduced-motion:reduce){
+  body::before,.hero::before,.envelope,.final h2{animation:none!important}
+  .open-btn::before{display:none}
+}
+
+
+/* ===== VERTICAL GLAM GALLERY UPGRADE ===== */
+.gallery{
+  display:flex !important;
+  flex-direction:column !important;
+  align-items:center !important;
+  gap:34px !important;
+  padding:34px 14px 46px !important;
+  width:min(760px, 100%) !important;
+  margin:0 auto !important;
+}
+.gallery .polaroid,
+.gallery > div,
+.gallery figure{
+  width:min(680px, 92vw) !important;
+  margin:0 auto !important;
+}
+.gallery .polaroid{
+  position:relative !important;
+  padding:12px 12px 22px !important;
+  border-radius:24px !important;
+  overflow:hidden !important;
+  background:linear-gradient(145deg,rgba(255,255,255,.18),rgba(255,255,255,.055)) !important;
+  border:1px solid rgba(255,255,255,.24) !important;
+  box-shadow:0 22px 60px rgba(0,0,0,.34),0 0 35px rgba(255,90,180,.10) !important;
+  backdrop-filter:blur(14px) !important;
+  transform:none !important;
+  transition:transform .55s cubic-bezier(.2,.8,.2,1),box-shadow .55s ease !important;
+}
+.gallery .polaroid:hover{
+  transform:translateY(-8px) scale(1.012) !important;
+  box-shadow:0 30px 75px rgba(0,0,0,.42),0 0 55px rgba(255,80,190,.18) !important;
+}
+.gallery .polaroid img{
+  display:block !important;
+  width:100% !important;
+  height:auto !important;
+  max-height:780px !important;
+  object-fit:cover !important;
+  border-radius:17px !important;
+  filter:saturate(1.08) contrast(1.03) brightness(1.02) !important;
+}
+.gallery .polaroid::after{
+  content:"";
+  position:absolute;
+  inset:12px 12px 22px;
+  border-radius:17px;
+  background:linear-gradient(135deg,rgba(255,255,255,.20),transparent 28%,transparent 70%,rgba(255,75,170,.10));
+  pointer-events:none;
+}
+.gallery .polaroid.main{
+  width:min(720px,94vw) !important;
+}
+.gallery .polaroid.main img{
+  max-height:820px !important;
+}
+.gallery .polaroid:nth-child(even){
+  transform:translateX(10px) !important;
+}
+.gallery .polaroid:nth-child(odd){
+  transform:translateX(-10px) !important;
+}
+.gallery .polaroid:nth-child(even):hover,
+.gallery .polaroid:nth-child(odd):hover{
+  transform:translateY(-8px) scale(1.012) !important;
+}
+.gallery .polaroid .caption{
+  position:relative;
+  z-index:2;
+  margin-top:12px !important;
+  font-size:1rem !important;
+  letter-spacing:.06em !important;
+  text-transform:uppercase !important;
+  opacity:.9 !important;
+}
+@media (max-width:700px){
+  .gallery{gap:24px !important;padding:24px 8px 34px !important}
+  .gallery .polaroid,
+  .gallery .polaroid.main{width:94vw !important}
+  .gallery .polaroid:nth-child(even),
+  .gallery .polaroid:nth-child(odd){transform:none !important}
+  .gallery .polaroid img{max-height:680px !important}
+}
+
 </style>
 </head>
 
 
 <body>
+<div id="scrollProgress" aria-hidden="true"></div>
+<div id="cursorGlow" aria-hidden="true"></div>
+
 
 
 <!-- ================= BUTTERFLY TEMPLATE ================= -->
@@ -2100,7 +2460,7 @@ scroll
 
 <!-- ================= MESSAGE ================= -->
 
-<section id="message">
+<section id="message" class="reveal-on-scroll">
 
 <div class="wrap">
 
@@ -2300,7 +2660,7 @@ get to know.
 
 <!-- ================= GALLERY ================= -->
 
-<section>
+<section class="reveal-on-scroll">
 
 <div class="wrap">
 
@@ -2464,7 +2824,7 @@ Nishumi 🌙
 
 <!-- ================= MUSIC ================= -->
 
-<section>
+<section class="reveal-on-scroll">
 
 <div class="wrap">
 
@@ -2533,7 +2893,7 @@ Play music 💜
 
 <!-- ================= CAKE ================= -->
 
-<section class="countdown">
+<section class="countdown reveal-on-scroll">
 
 <div class="cd-box">
 
@@ -2591,6 +2951,35 @@ Happy Birthday, Nisha! 🎂
 Blow the candle 🕯️
 
 </button>
+
+
+<dialog
+  class="password-dialog"
+  id="passwordDialog"
+  aria-labelledby="passwordTitle"
+>
+  <form id="passwordForm">
+    <h3 id="passwordTitle">A little secret</h3>
+    <label for="passwordInput">Enter the password</label>
+    <input
+      id="passwordInput"
+      type="password"
+      autocomplete="off"
+      required
+    >
+    <p
+      class="password-error"
+      id="passwordError"
+      role="status"
+      aria-live="polite"
+    ></p>
+    <button class="open-btn" type="submit">Unlock the secret 💜</button>
+    <br>
+    <button class="password-cancel" id="cancelPassword" type="button">
+      Not now
+    </button>
+  </form>
+</dialog>
 
 
 <!-- ================= HIDDEN MESSAGE ================= -->
@@ -3410,84 +3799,83 @@ envelope.addEventListener(
 
 
 /* =====================================================
-   BLOW THE CANDLE
+   BLOW THE CANDLE + SECRET MESSAGE
 ===================================================== */
 
-const blowBtn =
-  document.getElementById("blowBtn");
+const blowBtn = document.getElementById("blowBtn");
+const flame = document.getElementById("flame");
+const birthdayWish = document.getElementById("birthdayWish");
 
-const flame =
-  document.getElementById("flame");
+const birthdayPassword = "Nisha@108";
+const passwordDialog = document.getElementById("passwordDialog");
+const passwordForm = document.getElementById("passwordForm");
+const passwordInput = document.getElementById("passwordInput");
+const passwordError = document.getElementById("passwordError");
+const cancelPassword = document.getElementById("cancelPassword");
 
-const birthdayWish =
-  document.getElementById("birthdayWish");
+let candleBlown = false;
+let messageUnlocked = false;
 
+function askForPassword(){
+  passwordError.textContent = "";
+  passwordInput.value = "";
+  passwordDialog.showModal();
+  requestAnimationFrame(() => passwordInput.focus());
+}
 
-blowBtn.addEventListener(
-  "click",
-  function(){
+function revealBirthdayWish(){
+  if(messageUnlocked) return;
 
-    /* Prevent multiple clicks */
+  messageUnlocked = true;
+  birthdayWish.classList.add("show");
+  blowBtn.setAttribute("aria-expanded","true");
+  blowBtn.textContent = "Your special message 💜";
+  blowBtn.disabled = true;
 
-    if(
-      this.dataset.blown === "true"
-    ){
+  confetti();
 
-      return;
+  setTimeout(() => {
+    birthdayWish.scrollIntoView({
+      behavior:"smooth",
+      block:"start"
+    });
+  }, 350);
+}
 
-    }
-
-
-    this.dataset.blown="true";
-
-
-    /* Blow out flame */
-
-    flame.classList.add("out");
-
-
-    /* Change button */
-
-    this.innerHTML =
-      "Your special message 💜";
-
-
-    /* Show message */
-
-    birthdayWish.classList.add("show");
-
-
-    /* Accessibility */
-
-    this.setAttribute(
-      "aria-expanded",
-      "true"
-    );
-
-
-    /* Celebration */
-
-    confetti();
-
-
-    /* Scroll to message */
-
-    setTimeout(
-      () => {
-
-        birthdayWish.scrollIntoView({
-          behavior:"smooth",
-          block:"start"
-        });
-
-      },
-      350
-    );
-
+blowBtn.addEventListener("click", () => {
+  if(candleBlown){
+    if(!messageUnlocked) askForPassword();
+    return;
   }
-);
 
+  candleBlown = true;
+  blowBtn.disabled = true;
+  flame.classList.add("out");
+  blowBtn.textContent = "A little secret is unlocking…";
 
+  setTimeout(() => {
+    blowBtn.disabled = false;
+    blowBtn.textContent = "Unlock your message 💜";
+    askForPassword();
+  }, 1800);
+});
+
+passwordForm.addEventListener("submit", event => {
+  event.preventDefault();
+
+  if(passwordInput.value === birthdayPassword){
+    passwordDialog.close();
+    passwordError.textContent = "";
+    revealBirthdayWish();
+  }else{
+    passwordError.textContent = "Not quite… try the little secret again 💜";
+    passwordInput.select();
+  }
+});
+
+cancelPassword.addEventListener("click", () => {
+  passwordDialog.close();
+});
 
 /* =====================================================
    CONFETTI
@@ -3576,6 +3964,92 @@ function confetti(){
   }
 
 }
+
+
+/* =====================================================
+   PREMIUM MICRO-INTERACTIONS
+===================================================== */
+
+const progress = document.getElementById("scrollProgress");
+const cursorGlow = document.getElementById("cursorGlow");
+
+function updateProgress(){
+  const max = document.documentElement.scrollHeight - innerHeight;
+  progress.style.width = `${max > 0 ? (scrollY / max) * 100 : 0}%`;
+}
+addEventListener("scroll", updateProgress, {passive:true});
+addEventListener("resize", updateProgress);
+updateProgress();
+
+if(cursorGlow && matchMedia("(pointer:fine)").matches){
+  let gx = innerWidth/2, gy = innerHeight/2;
+  let tx = gx, ty = gy;
+
+  addEventListener("pointermove", e => {
+    tx = e.clientX;
+    ty = e.clientY;
+    cursorGlow.style.opacity = "1";
+  }, {passive:true});
+
+  addEventListener("pointerleave", () => {
+    cursorGlow.style.opacity = "0";
+  });
+
+  function moveGlow(){
+    gx += (tx-gx)*.12;
+    gy += (ty-gy)*.12;
+    cursorGlow.style.left = gx+"px";
+    cursorGlow.style.top = gy+"px";
+    requestAnimationFrame(moveGlow);
+  }
+  moveGlow();
+}
+
+/* Reveal sections naturally as the visitor scrolls. */
+const revealObserver = new IntersectionObserver(
+  entries => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.classList.add("visible");
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  },
+  {threshold:.14}
+);
+
+document.querySelectorAll(".reveal-on-scroll").forEach(el => {
+  revealObserver.observe(el);
+});
+
+/* Gentle 3D tilt for the main hero photo. */
+const heroCard = document.querySelector(".polaroid.main");
+
+if(heroCard && matchMedia("(pointer:fine)").matches){
+  heroCard.addEventListener("pointermove", e => {
+    const r = heroCard.getBoundingClientRect();
+    const x = (e.clientX-r.left)/r.width-.5;
+    const y = (e.clientY-r.top)/r.height-.5;
+
+    heroCard.style.transform =
+      `rotate(-3deg) perspective(900px) rotateX(${y*-4}deg) rotateY(${x*5}deg) translateY(-3px)`;
+  });
+
+  heroCard.addEventListener("pointerleave", () => {
+    heroCard.style.transform = "rotate(-3deg)";
+  });
+}
+
+/* Make the music button reflect the actual audio state. */
+song.addEventListener("ended", () => {
+  disc.classList.remove("on");
+  playBtn.innerHTML = "Play music again 💜";
+});
+
+/* Small welcome burst after the loader disappears. */
+window.addEventListener("load", () => {
+  setTimeout(() => confetti(), 1650);
+});
 
 </script>
 
