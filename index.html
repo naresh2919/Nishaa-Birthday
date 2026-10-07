@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Happy Birthday Nisha ✦ | Our Little Story</title>
+<title>Happy Birthday Ladiki ✦ | Our Little Story</title>
 <meta name="description" content="A cinematic birthday letter for Nisha — a little story about the day we first met.">
 <meta name="theme-color" content="#090620">
 
@@ -857,8 +857,10 @@ body::before{
 .photo-card img{
   width:100%;
   height:100%;
-  object-fit:cover;
-  background:#cbdff2;
+  object-fit:contain;
+  object-position:center center;
+  background:#f7f8fb;
+  padding:5px;
 }
 
 .photo-card figcaption{
@@ -1261,9 +1263,61 @@ footer b{color:#8fc9f4}
 }
 
 </style>
+
+<style>
+/* Final photo-clarity overrides */
+.photo-card img{object-fit:contain !important;object-position:center center !important;background:#f7f8fb !important;padding:5px !important;}
+@media (max-width:700px){
+  .scrapbook-stage{min-height:590px;}
+  .photo-main{width:min(72vw,320px);height:min(86vw,390px);top:55px;}
+  .photo-small{width:min(44vw,185px);height:min(52vw,220px);left:1%;top:245px;}
+  .photo-lower{width:min(44vw,185px);height:min(52vw,220px);right:1%;top:285px;}
+}
+
+/* ---------- opening birthday popup ---------- */
+.birthday-popup{
+  position:fixed;inset:0;z-index:20000;display:grid;place-items:center;padding:22px;
+  background:radial-gradient(circle at 50% 42%,rgba(28,77,135,.72),rgba(2,10,28,.97) 72%);
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  opacity:1;visibility:visible;transition:opacity .65s ease,visibility .65s ease;
+}
+.birthday-popup.hide{opacity:0;visibility:hidden;pointer-events:none}
+.birthday-popup-card{
+  width:min(560px,100%);padding:48px 28px 42px;text-align:center;position:relative;
+  border:1px solid rgba(158,211,255,.55);border-radius:30px;
+  background:linear-gradient(145deg,rgba(10,40,82,.96),rgba(4,18,45,.96));
+  box-shadow:0 35px 100px rgba(0,0,0,.7),0 0 70px rgba(84,168,255,.18);
+  transform:translateY(0) scale(1);animation:popupIn .8s cubic-bezier(.2,.8,.2,1) both;
+}
+.birthday-popup-sparkles{color:#b9ddff;letter-spacing:14px;font-size:18px;margin-bottom:14px;text-shadow:0 0 18px rgba(130,200,255,.9)}
+.birthday-popup-kicker{font-family:var(--hand);font-size:22px;color:#a9d6ff;margin-bottom:10px}
+.birthday-popup h1{font-family:"Caveat","Segoe Script",cursive;font-size:clamp(58px,12vw,92px);line-height:.9;font-weight:600;color:#f5fbff;text-shadow:0 0 12px rgba(132,204,255,.8),0 0 34px rgba(67,156,255,.55)}
+.birthday-popup h1 span{color:#8fcbff}
+.birthday-popup-copy{margin:20px 0 24px;color:#d9eaff;font-size:17px}
+.birthday-popup .btn{min-width:220px}
+@keyframes popupIn{from{opacity:0;transform:translateY(24px) scale(.94);filter:blur(5px)}to{opacity:1;transform:none;filter:none}}
+body.birthday-popup-open{overflow:hidden}
+@media(max-width:520px){
+  .birthday-popup{padding:16px}
+  .birthday-popup-card{padding:40px 20px 34px;border-radius:24px}
+  .birthday-popup h1{font-size:clamp(54px,16vw,76px)}
+  .birthday-popup-kicker{font-size:20px}
+}
+
+</style>
 </head>
 
 <body>
+<div id="birthdayPopup" class="birthday-popup" role="dialog" aria-modal="true" aria-labelledby="birthdayPopupTitle">
+  <div class="birthday-popup-card">
+    <div class="birthday-popup-sparkles" aria-hidden="true">✦ ✧ ✦</div>
+    <p class="birthday-popup-kicker">A little surprise for you</p>
+    <h1 id="birthdayPopupTitle">Happy Birthday,<br><span>Ladiki</span> 🎂</h1>
+    <p class="birthday-popup-copy">Today is all about you. 💙</p>
+    <button class="btn" id="birthdayPopupOpen" type="button">Open your surprise ✨</button>
+  </div>
+</div>
+
 <div id="sky" aria-hidden="true"><div id="stars"></div></div>
 
 <div class="clock-chip" id="clockChip" aria-hidden="true"><span id="chipIcon">🌙</span><span id="chipTime">12:00 am</span></div>
@@ -1337,21 +1391,21 @@ footer b{color:#8fc9f4}
 
     <figure class="photo-card photo-main">
       <div class="photo-tape"></div>
-      <img src="nishabirthday.png" alt="Nishanandhini birthday portrait" fetchpriority="high"
+      <img loading="eager" decoding="async" src="nishabirthday.png" alt="Nishanandhini birthday portrait" fetchpriority="high"
            onerror="this.style.display='none'">
       <figcaption>Nisha ♡</figcaption>
     </figure>
 
     <figure class="photo-card photo-small">
       <div class="photo-tape"></div>
-      <img src="baby.jpeg" alt="Nishanandhini memory" loading="lazy"
+      <img loading="eager" decoding="async" src="baby.jpeg" alt="Nishanandhini memory"
            onerror="this.style.display='none'">
       <figcaption>beautiful memories ✦</figcaption>
     </figure>
 
     <figure class="photo-card photo-lower">
       <div class="photo-tape"></div>
-      <img src="17.jpeg" alt="Nishanandhini collage" loading="lazy"
+      <img loading="eager" decoding="async" src="17.jpeg" alt="Nishanandhini collage" loading="lazy"
            onerror="this.style.display='none'">
       <figcaption>Nisha Belle ♡</figcaption>
     </figure>
@@ -1617,7 +1671,7 @@ footer b{color:#8fc9f4}
 
     <article class="dream">
       <div class="dream-img">
-        <img src="Same Soul, Bigger Dreams.png" alt="Same soul, bigger dreams quote artwork" loading="lazy" onerror="this.style.display='none'">
+        <img loading="lazy" decoding="async" src="Same Soul, Bigger Dreams.png" alt="Same soul, bigger dreams quote artwork" loading="lazy" onerror="this.style.display='none'">
       </div>
       <div class="dream-copy">
         <div class="dream-kicker">a little reminder</div>
@@ -1630,31 +1684,31 @@ footer b{color:#8fc9f4}
     <div class="strip" id="strip" tabindex="0" aria-label="Photo gallery, swipe sideways">
       <figure class="shot wide">
         <button type="button" aria-label="View photo larger">
-          <img src="nandhini.png" alt="Nisha collage" loading="lazy" onerror="this.closest('figure').style.display='none'">
+          <img loading="lazy" decoding="async" src="nandhini.png" alt="Nisha collage" loading="lazy" onerror="this.closest('figure').style.display='none'">
         </button>
         <figcaption>Nisha Nandhini 💜</figcaption>
       </figure>
       <figure class="shot">
         <button type="button" aria-label="View photo larger">
-          <img src="11.jpeg" alt="Nisha" loading="lazy" onerror="this.closest('figure').style.display='none'">
+          <img loading="lazy" decoding="async" src="11.jpeg" alt="Nisha" loading="lazy" onerror="this.closest('figure').style.display='none'">
         </button>
         <figcaption>birthday girl</figcaption>
       </figure>
       <figure class="shot">
         <button type="button" aria-label="View photo larger">
-          <img src="6.jpeg" alt="Nisha" loading="lazy" onerror="this.closest('figure').style.display='none'">
+          <img loading="lazy" decoding="async" src="6.jpeg" alt="Nisha" loading="lazy" onerror="this.closest('figure').style.display='none'">
         </button>
         <figcaption>Nishaa 🌸</figcaption>
       </figure>
       <figure class="shot">
         <button type="button" aria-label="View photo larger">
-          <img src="20.jpeg" alt="Nisha" loading="lazy" onerror="this.closest('figure').style.display='none'">
+          <img loading="lazy" decoding="async" src="20.jpeg" alt="Nisha" loading="lazy" onerror="this.closest('figure').style.display='none'">
         </button>
         <figcaption>Nishie ✨</figcaption>
       </figure>
       <figure class="shot">
         <button type="button" aria-label="View photo larger">
-          <img src="girl.png" alt="Nisha" loading="lazy" onerror="this.closest('figure').style.display='none'">
+          <img loading="lazy" decoding="async" src="girl.png" alt="Nisha" loading="lazy" onerror="this.closest('figure').style.display='none'">
         </button>
         <figcaption>Nishumi 🌙</figcaption>
       </figure>
@@ -1811,6 +1865,19 @@ footer b{color:#8fc9f4}
 const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
 const $ = id => document.getElementById(id);
 
+/* ---------- opening birthday popup ---------- */
+const birthdayPopup = $("birthdayPopup");
+const birthdayPopupOpen = $("birthdayPopupOpen");
+document.body.classList.add("birthday-popup-open");
+function closeBirthdayPopup(){
+  if(!birthdayPopup) return;
+  birthdayPopup.classList.add("hide");
+  document.body.classList.remove("birthday-popup-open");
+  setTimeout(()=>birthdayPopup.remove(),700);
+}
+birthdayPopupOpen?.addEventListener("click", closeBirthdayPopup);
+
+
 /* ---------- butterfly helper ---------- */
 const tpl = $("bflyTpl");
 const makeBfly = () => tpl.content.firstElementChild.cloneNode(true);
@@ -1959,11 +2026,8 @@ if(birthdayUnlockAt.getTime() > Date.now()){
 function startPage(){
   document.body.classList.add("go");
   if(!reduced) setTimeout(()=>confetti(30), 500);
-  const song = $("birthdaySong");
-  if(song && !song.paused) return;
-  if(song && song.readyState >= 1){
-    song.play().catch(()=>{});
-  }
+  // IMPORTANT: do not autoplay music. It starts only when the visitor
+  // explicitly presses the Play music button.
 }
 
 function playIntro(){
